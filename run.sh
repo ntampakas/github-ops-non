@@ -3,12 +3,16 @@
 # Drill
 # Drill
 
-set -eux
+#set -eux
+set -eu
 
 EXIT_CODE=0
 QUEUED=$(curl -H "authorization: token ${GH_PAT}" "https://api.github.com/repos/${REPO}/actions/runs?status=queued" | jq -cr '.workflow_runs[].id')
 for WORKFLOW_ID in $QUEUED; do
+  echo $WORKFLOW_ID
+
   JOB_DATA=$(curl -H "authorization: token ${GH_PAT}" "https://api.github.com/repos/${REPO}/actions/runs/${WORKFLOW_ID}/jobs" | jq -cr '.')
+  echo $JOB_DATA
 
 #  if [ "$(echo "${JOB_DATA}" | jq -cr '.jobs | length')" != "1" ]; then
 #    echo "TODO: more than one job is not supported"
