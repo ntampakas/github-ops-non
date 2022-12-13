@@ -2,6 +2,8 @@ name: con
 on:
   push
 
+concurrency: ci-${{ github.ref }}
+
 jobs:
   consecutiveness:
     runs-on: ubuntu-latest
