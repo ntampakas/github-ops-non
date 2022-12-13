@@ -1,3 +1,7 @@
+name: con
+on:
+  push
+
 jobs:
   consecutiveness:
     runs-on: ubuntu-latest
