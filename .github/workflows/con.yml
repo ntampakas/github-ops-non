@@ -5,12 +5,12 @@ on:
 concurrency: ci-${{ github.ref }}
 
 jobs:
-  consecutiveness:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: mktcode/consecutive-workflow-action@e2e008186aa210faacd68ec30f6ac236f7e2f435
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
+#  consecutiveness:
+#    runs-on: ubuntu-latest
+#    steps:
+#    - uses: mktcode/consecutive-workflow-action@e2e008186aa210faacd68ec30f6ac236f7e2f435
+#      with:
+#        token: ${{ secrets.GITHUB_TOKEN }}
 
   sleep:
     runs-on: ubuntu-latest
