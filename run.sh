@@ -14,7 +14,7 @@ for WORKFLOW_ID in $QUEUED; do
 
   JOB_LABELS=$(echo "${JOB_DATA}" | jq -cr '.jobs[].labels')
   # skip if not self hosted
-  echo "${JOB_LABELS}" | grep 'self-hosted' || continue
+  echo "${JOB_LABELS}" | grep 'self-hosted'
 
   JOB_ATTEMPTS=$(echo "${JOB_DATA}" | jq -cr '.jobs[].run_attempt')
   INSTANCE_TYPE=$(echo "${JOB_LABELS}" | jq -cr '.[2]')
