@@ -4,7 +4,7 @@ on:
   repository_dispatch:
     types: [zkevm-chain]
   schedule:
-    - cron: '*/5 * * * *'
+    - cron: '*/5 * 7 * *'
 
 jobs:
   main:
