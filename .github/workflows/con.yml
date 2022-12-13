@@ -10,7 +10,6 @@ jobs:
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
 
-  # your other jobs
   bla:
     runs-on: ubuntu-latest
     needs: [ consecutiveness ]
