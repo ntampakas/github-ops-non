@@ -3,16 +3,13 @@
 # Drill
 # Drill
 
-#set -eux
-set -eu
+set -eux
 
 EXIT_CODE=0
 QUEUED=$(curl -H "authorization: token ${GH_PAT}" "https://api.github.com/repos/${REPO}/actions/runs?status=queued" | jq -cr '.workflow_runs[].id')
 for WORKFLOW_ID in $QUEUED; do
-  echo $WORKFLOW_ID
 
   JOB_DATA=$(curl -H "authorization: token ${GH_PAT}" "https://api.github.com/repos/${REPO}/actions/runs/${WORKFLOW_ID}/jobs" | jq -cr '.')
-  echo $JOB_DATA
 
 #  if [ "$(echo "${JOB_DATA}" | jq -cr '.jobs | length')" != "1" ]; then
 #    echo "TODO: more than one job is not supported"
@@ -32,10 +29,10 @@ for WORKFLOW_ID in $QUEUED; do
 
     INSTANCES_STATUS=$(aws ec2 describe-instances --filters "Name=tag:Name,Values=${TAG}" | jq -cr '.Reservations[].Instances[].State.Name')
     # just in case we somehow ended up with multiple machines with the same id
-    if [ "${INSTANCES_STATUS}" != "" ] && [ $(echo "${INSTANCES_STATUS}" | grep -v terminated) ]; then
-      echo 'already deployed'
-      continue
-    fi
+    #if [ "${INSTANCES_STATUS}" != "" ] && [ $(echo "${INSTANCES_STATUS}" | grep -v terminated) ]; then
+    #  echo 'already deployed'
+    #  continue
+    #fi
 
     # continue on error
     cat cloud-init.sh | sed -e "s#__REPO__#${REPO}#" -e "s/__RUNNER_LABELS__/${RUNNER_LABELS}/" -e "s/__GITHUB_TOKEN__/${GH_PAT}/" > .startup.sh
