@@ -18,7 +18,7 @@ jobs:
       KEY_NAME: devops
       SUBNET_ID: subnet-07ce3c81e409f4e14
       SECURITY_GROUP_ID: sg-03c0a0de6836d583d
-      REPO: privacy-scaling-explorations/zkevm-chain
+      REPO: ntampakas/github-ops
     runs-on: ubuntu-latest
     concurrency:
       group: ${{ github.workflow }}
