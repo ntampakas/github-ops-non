@@ -13,7 +13,8 @@ jobs:
 #        token: ${{ secrets.GITHUB_TOKEN }}
 
   sleep:
-    runs-on: ubuntu-latest
+    #runs-on: ubuntu-latest
+    runs-on: ["${{github.run_id}}", self-hosted, t3a.medium]
     #needs: [ consecutiveness ]
     steps:
       - run: sleep 600
