@@ -11,7 +11,7 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
 
   # your other jobs
-  something:
+  bla:
     runs-on: ubuntu-latest
     needs: [ consecutiveness ]
     steps:
