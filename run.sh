@@ -6,7 +6,7 @@ EXIT_CODE=0
 QUEUED=$(curl -H "authorization: token ${GH_PAT}" "https://api.github.com/repos/${REPO}/actions/runs?status=queued" | jq -cr '.workflow_runs[].id')
 for WORKFLOW_ID in $QUEUED; do
 
-  echo $WORKDLOW_ID
+  echo $WORKFLOW_ID
 
   JOB_DATA=$(curl -H "authorization: token ${GH_PAT}" "https://api.github.com/repos/${REPO}/actions/runs/${WORKFLOW_ID}/jobs" | jq -cr '.')
 
