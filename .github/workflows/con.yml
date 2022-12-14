@@ -9,4 +9,4 @@ jobs:
     #runs-on: ubuntu-latest
     runs-on: ["${{github.run_id}}", self-hosted, t3a.medium]
     steps:
-      - run: sleep 600
+      - run: sleep 60
