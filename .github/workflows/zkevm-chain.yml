@@ -27,7 +27,7 @@ jobs:
       - uses: aws-actions/configure-aws-credentials@v1-node16
         with:
           role-to-assume: arn:aws:iam::490752553772:role/GH-Actions
-          role-duration-seconds: 300
+          role-duration-seconds: 900
           aws-region: eu-central-1
       - uses: actions/checkout@v2
       - run: ./run.sh
