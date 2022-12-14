@@ -12,7 +12,7 @@ jobs:
     env:
       GH_PAT: ${{ secrets.GH_PAT }}
       IMAGE_ID: ami-06ce824c157700cd2
-      KEY_NAME: devops-testautomation
+      KEY_NAME: devops
       SUBNET_ID: subnet-07ce3c81e409f4e14
       SECURITY_GROUP_ID: sg-03c0a0de6836d583d
       REPO: ntampakas/github-ops
