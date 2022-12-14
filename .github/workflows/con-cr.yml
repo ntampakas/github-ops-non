@@ -15,7 +15,7 @@ jobs:
 
     steps:
     - name: configure aws credentials
-      uses: aws-actions/configure-aws-credentials@v1
+      uses: aws-actions/configure-aws-credentials@v1-node16
       with:
         role-to-assume: arn:aws:iam::490752553772:role/GH-Actions
         role-duration-seconds: 900
