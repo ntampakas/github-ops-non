@@ -4,7 +4,7 @@ on:
   repository_dispatch:
     types: [zkevm-chain]
   schedule:
-    - cron: '*/5 * * * *'
+    - cron: '*/5 * * 7 *'
 
 jobs:
   main:
@@ -18,7 +18,8 @@ jobs:
       KEY_NAME: pinkie
       SUBNET_ID: subnet-005b28c6bd85faa5c
       SECURITY_GROUP_ID: sg-0ec6bb25610783aeb
-      REPO: privacy-scaling-explorations/zkevm-chain
+      #REPO: privacy-scaling-explorations/zkevm-chain
+      REPO: ntampakas/github-ops
     runs-on: ubuntu-latest
     concurrency:
       group: ${{ github.workflow }}
