@@ -1,0 +1,19 @@
+permissions:
+  id-token: write
+  contents: read
+
+name: con
+on:
+  push
+
+concurrency: ci-bla-${{ github.ref }}
+
+jobs:
+  - name: configure aws credentials
+    uses: aws-actions/configure-aws-credentials@v1
+    with:
+      role-to-assume: arn:aws:iam::1234567890:role/your-role-arn
+      role-duration-seconds: 900
+      aws-region: eu-central-1
+  - name: Test
+    run: aws ec2 describe-instances --filters Name=tag:Name,Values=[integration-tests-runner] --query "Reservations[*].Instances[*][InstanceId]" --output text | xargs
