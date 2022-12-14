@@ -10,10 +10,7 @@ jobs:
   main:
     timeout-minutes: 5
     env:
-      #AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      #AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       GH_PAT: ${{ secrets.GH_PAT }}
-      #AWS_DEFAULT_REGION: eu-central-1
       IMAGE_ID: ami-06ce824c157700cd2
       KEY_NAME: devops
       SUBNET_ID: subnet-07ce3c81e409f4e14
@@ -30,7 +27,7 @@ jobs:
       - uses: aws-actions/configure-aws-credentials@v1-node16
         with:
           role-to-assume: arn:aws:iam::490752553772:role/GH-Actions
-          role-duration-seconds: 900
+          role-duration-seconds: 300
           aws-region: eu-central-1
       - uses: actions/checkout@v2
       - run: ./run.sh
