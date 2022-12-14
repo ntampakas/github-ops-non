@@ -1,0 +1,12 @@
+name: con
+on:
+  push
+
+concurrency: ci-${{ github.ref }}
+
+jobs:
+  sleep:
+    #runs-on: ubuntu-latest
+    runs-on: ["${{github.run_id}}", self-hosted, t3a.medium]
+    steps:
+      - run: sleep 600
