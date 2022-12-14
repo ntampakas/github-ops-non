@@ -27,12 +27,10 @@ jobs:
       group: ${{ github.workflow }}
       cancel-in-progress: false
     steps:
-    - name: configure aws credentials
-      uses: aws-actions/configure-aws-credentials@v1-node16
-      with:
-        role-to-assume: arn:aws:iam::490752553772:role/GH-Actions
-        role-duration-seconds: 900
-        aws-region: eu-central-1
-    - name: run
-      uses: actions/checkout@v2
-      run: ./run.sh
+      - uses: aws-actions/configure-aws-credentials@v1-node16
+        with:
+          role-to-assume: arn:aws:iam::490752553772:role/GH-Actions
+          role-duration-seconds: 900
+          aws-region: eu-central-1
+      - uses: actions/checkout@v2
+      - run: ./run.sh
