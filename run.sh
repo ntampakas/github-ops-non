@@ -1,5 +1,4 @@
 #!/bin/sh
-# Drill 1
 
 set -eux
 
