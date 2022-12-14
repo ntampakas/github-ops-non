@@ -2,18 +2,23 @@ permissions:
   id-token: write
   contents: read
 
-name: con
+name: con-cr
 on:
   push
 
 concurrency: ci-bla-${{ github.ref }}
 
 jobs:
-  - name: configure aws credentials
-    uses: aws-actions/configure-aws-credentials@v1
-    with:
-      role-to-assume: arn:aws:iam::1234567890:role/your-role-arn
-      role-duration-seconds: 900
-      aws-region: eu-central-1
-  - name: Test
+
+  configuration:
+    name: configure aws credentials
+    - uses: aws-actions/configure-aws-credentials@v1
+      with:
+        role-to-assume: arn:aws:iam::490752553772:role/GH-Actions
+        role-duration-seconds: 900
+        aws-region: eu-central-1
+
+  testrun:
+    name: Test
+    runs-on: ubuntu-latest
     run: aws ec2 describe-instances --filters Name=tag:Name,Values=[integration-tests-runner] --query "Reservations[*].Instances[*][InstanceId]" --output text | xargs
