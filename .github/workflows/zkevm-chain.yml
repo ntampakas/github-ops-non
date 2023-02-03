@@ -5,7 +5,6 @@ on:
     types: [zkevm-chain]
   schedule:
     - cron: '*/5 * 7 * *'
-
 jobs:
   main:
     timeout-minutes: 5
