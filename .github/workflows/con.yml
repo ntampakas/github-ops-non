@@ -17,4 +17,4 @@ jobs:
     runs-on: ["${{github.run_id}}", self-hosted, t3a.medium]
     #needs: [ consecutiveness ]
     steps:
-      - run: sleep 60
+      - run: sleep 600
