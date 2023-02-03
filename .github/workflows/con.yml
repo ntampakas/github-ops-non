@@ -14,7 +14,7 @@ jobs:
 
   sleep:
     #runs-on: ubuntu-latest
-    runs-on: ["${{github.run_id}}", self-hosted, t3a.medium]
+    runs-on: ["${{github.run_id}}", self-hosted, c5.4xlarge]
     #needs: [ consecutiveness ]
     steps:
       - run: sleep 600
