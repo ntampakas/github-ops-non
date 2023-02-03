@@ -16,4 +16,3 @@ The [run.sh](run.sh) script basically checks:
 - for any queued workflows on the target repository.
 - creates a new instance with [this cloud-init script](cloud-init.sh) for each unique workflow run.
 - terminates any stuck instances if the workflow concluded - just in case if the instances don't poweroff normally.
-
