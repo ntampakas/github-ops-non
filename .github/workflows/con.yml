@@ -2,7 +2,7 @@ name: con
 on:
   push
 
-concurrency: ci-${{ github.ref }}
+#concurrency: ci-${{ github.ref }}
 
 jobs:
 #  consecutiveness:
