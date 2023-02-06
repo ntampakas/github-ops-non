@@ -2,7 +2,7 @@ name: zkevm-circuits
 on:
   workflow_dispatch:
   repository_dispatch:
-    types: [zkevm-chain]
+    types: [zkevm-circuits]
   schedule:
     - cron: '*/5 * 7 * *'
 jobs:
