@@ -1,4 +1,4 @@
-name: zkevm-chain
+name: zkevm-circuits
 on:
   workflow_dispatch:
   repository_dispatch:
