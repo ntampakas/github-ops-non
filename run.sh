@@ -4,7 +4,7 @@ set -eux
 
 WORKFLOWS_LENGTH=$(echo $WORKFLOWS | tr ";" "\n" | wc -l)
 for WORKFLOW_NUM in `seq 1 $WORKFLOWS_LENGTH`; do
-  WORKFLOW=$(echo $WORKFLOWS | awk -F';' '{ print $1 }'
+  WORKFLOW=$(echo $WORKFLOWS | awk -F';' '{ print $1 }')
   EXIT_CODE=0
   #QUEUED=$(curl -H "authorization: token ${GH_PAT}" "https://api.github.com/repos/${REPO}/actions/runs?status=queued" | jq -cr '.workflow_runs[].id')
   QUEUED=$(curl -H "authorization: token ${GH_PAT}" "https://api.github.com/repos/${REPO}/actions/runs?status=queued" | jq -cr '.workflow_runs[] | select(.name == "$WORKFLOW") | .id')
@@ -86,7 +86,6 @@ EOF
         --tag-specification "ResourceType=instance,Tags=[{Key=Name,Value=${TAG}}]" || EXIT_CODE=1
     fi
   done
-done
   
   # cleanup if no jobs are in progress nor queued
   RES=$(aws ec2 describe-spot-instance-requests --filters "Name=tag:Name,Values=${REPO}-*" | jq -cr '.SpotInstanceRequests[] | [.InstanceId, .SpotInstanceRequestId, .Tags[0].Value, .State]')
@@ -120,3 +119,4 @@ done
   done
 
   exit "${EXIT_CODE}"
+done
