@@ -15,7 +15,7 @@ jobs:
       SUBNET_ID: subnet-07ce3c81e409f4e14
       SECURITY_GROUP_ID: sg-03c0a0de6836d583d
       REPO: ntampakas/zkevm-circuits
-      WORKFLOWS: "CI Checks, bla"
+      WORKFLOWS: "CI Checks;bla"
     runs-on: ubuntu-latest
     permissions:
       id-token: write
