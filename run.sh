@@ -86,6 +86,7 @@ EOF
         --tag-specification "ResourceType=instance,Tags=[{Key=Name,Value=${TAG}}]" || EXIT_CODE=1
     fi
   done
+done
   
   # cleanup if no jobs are in progress nor queued
   RES=$(aws ec2 describe-spot-instance-requests --filters "Name=tag:Name,Values=${REPO}-*" | jq -cr '.SpotInstanceRequests[] | [.InstanceId, .SpotInstanceRequestId, .Tags[0].Value, .State]')
@@ -119,4 +120,3 @@ EOF
   done
 
   exit "${EXIT_CODE}"
-done
