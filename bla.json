@@ -1,0 +1,12 @@
+{
+  "UserData": "bla",
+  "SecurityGroupIds": ["sg-03c0a0de6836d583d"],
+  "SubnetId": "subnet-07ce3c81e409f4e14",
+  "ImageId": "ami-06ce824c157700cd2",
+  "InstanceType": "t3.small",
+  "KeyName": "devops",
+  "BlockDeviceMappings": [
+    { "DeviceName": "/dev/sda1", "Ebs": { "VolumeSize": 64, "DeleteOnTermination": true } }
+  ],
+  "EbsOptimized": true
+}
