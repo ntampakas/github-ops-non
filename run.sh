@@ -5,9 +5,12 @@ set -eux
 EXIT_CODE=0
 WORKFLOWS_LENGTH=$(echo $WORKFLOWS | tr ";" "\n" | wc -l)
 for WORKFLOW_NUM in `seq 1 $WORKFLOWS_LENGTH`; do
-  #WORKFLOW=$(echo $WORKFLOWS | awk -v v_num=$WORKFLOW_NUM -F';' '{ print $v_num }')
-  WORKFLOW=$(echo $WORKFLOWS | awk -F';' '{ print $4 }')
-  QUEUED=$(curl -H "authorization: token ${GH_PAT}" "https://api.github.com/repos/${REPO}/actions/runs?status=queued" | jq -cr '.workflow_runs[] | select(.name == "'"$WORKFLOW"'") | .id')
+  WORKFLOW=$(echo $WORKFLOWS | awk -v v_num=$WORKFLOW_NUM -F';' '{ print $v_num }')
+  if [ -z ${WORKFLOW} ]; then
+    QUEUED=$(curl -H "authorization: token ${GH_PAT}" "https://api.github.com/repos/${REPO}/actions/runs?status=queued" | jq -cr '.workflow_runs[].id') 
+  else
+    QUEUED=$(curl -H "authorization: token ${GH_PAT}" "https://api.github.com/repos/${REPO}/actions/runs?status=queued" | jq -cr '.workflow_runs[] | select(.name == "'"$WORKFLOW"'") | .id')
+  fi
   for WORKFLOW_ID in $QUEUED; do
     JOB_DATA=$(curl -H "authorization: token ${GH_PAT}" "https://api.github.com/repos/${REPO}/actions/runs/${WORKFLOW_ID}/jobs" | jq -cr '.')
   
